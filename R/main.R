@@ -1,13 +1,14 @@
 #' Retrieves the air quality data for a specific year, sorts the rows and columns and stores the data in a CSV file
 #'
-#' @param aYear The year of interest
+#' @param air.data The data to be processed
 #'
 #' @return Nothing
 #' @export
 #'
 #' @examples
-collectAirqData <- function(aYear) {
-  air.data <- getYearData(aYear)
+#' collectAirqData(getYearData(2014), 2014)  # Get the data for a full year
+#' collectAirqData(getDaysData("2019-01-01", "2019-04-30"), 2019)  # Get data for a specific range of dates
+collectAirqData <- function(air.data, aYear) {
   
   datetime <- dmy_hm(air.data$`FECHA-HORA`)
   air.data$HORA  <- paste0(
